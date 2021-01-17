@@ -1,4 +1,84 @@
 \section{Theorie}
 \label{sec:Theorie}
-
-\cite{sample}
+    \subsection{Effektiver Dämpfungsiderstand}
+        Um den effektiven Dämpfungswiderstand des RLC-Schwingkreises zu bestimmen wird die Spannung durch eine e-Funktion der Form
+        \begin{equation}
+            \label{eqn:e-spannung}
+            U(t)=U_0 \cdot e^{-2 \pi \cdot \mu \cdot t}
+        \end{equation}
+        dargestellt, wobei die Relation 
+        \begin{equation}
+            \label{eqn:R-L-Relation}
+            2 \pi \cdot \mu = \frac{R}{2L}
+        \end{equation}
+        genutzt wird. Gleichung (\ref{eqn:R-L-Relation}) nach $R$ aufgelöst liefert den effektiven Dämpfungswiderstand
+        \begin{equation}
+            \label{eqn:R_eff}
+            R = 4 \pi \cdot \mu \cdot L \, .
+        \end{equation}
+        Die Abklingdauer $T_{ex}$ ist die Zeit, nach der die Amplitude auf den e-ten Teil ihres ursprünglichen Wertes abgenommen hat. Die Abklingdauer $T_{ex}$ ist definiert als
+        \begin{equation}
+            \label{eqn:T_ex}
+            T_{ex}=\frac{1}{2 \, \pi \, \mu} = \frac{2L}{R}
+        \end{equation}
+    \subsection{Aperiodischer Grenzfall}
+        Ein besonderer Fall ist der Aperiodische Grenzfall. Er tritt ein wenn die Relation
+        \begin{equation*}
+            \frac{1}{LC}= \frac{R_{ap}^2}{4L^2}
+        \end{equation*}
+        eintritt. Dann kommt keine Schwinung zustande, sondern die Amplitude der Spannung nähert sich monoton gegen null. Damit ergibt sich der Grenzwiderstand zu 
+        \begin{equation}
+            \label{eqn:grenzwiderstand}
+            R_{ap}= \sqrt{\frac{4L}{C}} \, .
+        \end{equation}
+    \subsection{Frequenzabhängigkeit der Kondensatorspannung und Phase}
+        Die Frequenzabhängigkeit der Kondensatorspannung lässt sich mit Hilfe der Gleichung
+        \begin{equation}
+            \label{eqn:Strom.DGL}
+            L \frac{dI}{dt}+ R I + \frac{Q}{C} = U_0 e^{i\omega t}
+        \end{equation}
+        bestimmen. Durch Einsetzen der Relation $I=\frac{Q}{t}$ und $Q=U\cdot C$, wobei Q die Ladung und C die Kapazität des Kondensators bezeichnet, ergibt sich Gleichung (\ref{eqn:Strom.DGL}) zu
+        \begin{equation}
+            \label{eqn:Kondensatorspannung.DGl}
+            LC \frac{d^2U_c}{dt^2}+RC\frac{dU_c}{dt}+U_c= U_0 e^{i\omega t}
+        \end{equation}
+        Wenn nun der Lösungsansatz
+        \begin{equation}
+            U_c= \alpha (\omega) e^{iwt}
+        \end{equation}
+        mit einer beliebigen komplexen Zahl $\alpha(\omega)$, wobei $\omega$ die Frequenz bezeichnet, in Gleichung (\ref{eqn:Kondensatorspannung.DGl}) eingestzt wird, erhält man nach Ableiten und Kürzen des e\,-Terms, die Gleichung
+        \begin{equation}
+            -LC{\omega}^2 \alpha(\omega)+ i\omega RC \alpha(\omega) + \alpha(\omega) = U_0 \, .
+        \end{equation}
+        Durch Auflösen nach $\alpha(\omega)$ und Erweitern mit dem komplex konjugierten des Nenner erhält man für $\alpha(\omega)$
+        \begin{equation}
+            \alpha(\omega) = \frac{U_0(1-LC{\omega}^2-i\omega RC)}{(1-LC{\omega}^2)^2+{\omega}^2R^2C^2} \, .
+        \end{equation}
+        Da $U_c$ die Form $ \lvert \alpha(\omega) \rvert e^{i\phi}$ hat, ist gerade $\lvert U_c \rvert =\lvert \alpha(\omega) \rvert $.
+        Somit ergibt sich die Kondensatorspannung $U_c$ abhängig von der Frequenz zu
+        \begin{equation}
+            \label{eqn:spannung}
+            U_c(\omega)=\frac{U_0}{\sqrt{(1-LC{\omega}^2)^2+{\omega}^2R^2C^2}} \, .
+        \end{equation}
+        Die Kondensatorspannung erreicht ihr Maximum bei der sogenannten Resonanzfrequenz $\omega_{\symup{res}}$. Diese errechnet sich mit
+        \begin{equation}
+            \label{eqn:resonanz}
+            \omega_{\symup{res}}=\sqrt{\frac{1}{LC}-\frac{R^2}{2L^2}} \, .
+        \end{equation}
+        Desweitern kann die Eigenschaft des komplexen Ansatz für U genutzt werden, um die Phase zu erhalten. Es ist dabei
+        \begin{equation*}
+            tan\, \phi(\omega)= \frac{Im(U)}{Re(U)}=\frac{-\omega RC}{1-LC\omega^2}\, ,
+        \end{equation*}
+        womit sich sich die Phase $\phi$ zwischen Kondensator- und Erregerspannung zu
+        \begin{equation}
+            \label{eqn:phase}
+            \phi = arctan\biggl(\frac{-\omega RC}{1-LC\omega^2}\biggr)
+        \end{equation}
+        ergibt.
+    \subsection{Fehlerrechung}
+        Sämtliche Fehler in diesem Protokoll werden mit Hilfe der Gaußschen Fehlerfortpflanzung bestimmt. Die Fehler lassen sich mit
+        \begin{equation}
+            \label{eqn:Fehlerfortpflanzung}
+            \increment f = \sqrt{\sum_{i=1}^N{\biggl(\frac{\partial f}{\partial x_i}\biggr)^2}\cdot (\increment x_i)^2}
+        \end{equation}
+        berechnen.
